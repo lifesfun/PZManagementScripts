@@ -1,0 +1,79 @@
+#!/bin/bash 
+
+DIR="${BASH_SOURCE%/*}"
+
+if [[ ! -d "$DIR" ]]; then DIR="$PWD"; fi
+. "$DIR/pzinclu.sh"
+
+if [ "$#" -eq '1' ]  ; then
+
+	case "$1" in 
+        ### core ###
+		'start') pzStart &
+		;;
+		'stop') pzStop  &
+		;;
+		'restart') pzRestart & 
+		;;
+        ### Bot ###
+		'bot') pzBot &
+		;;
+        ### Etc ###
+		'autorestart') pzAutoRestart  &
+		;;
+		'watch') pzWatch 
+		;;
+		'rmzs') pzRmZs  &
+		;;
+		'fix') pzFix  &
+		;;
+        ### Backup ###
+		'bkmaps') pzBkMapBins &
+		;;
+		'bkfresh') pzBkFreshBins &
+		;;
+		'bkconf') pzBkConf &
+		;;
+		'compress') pzCompress  &
+		;;
+		'archive') pzArchive  &
+		;;
+        'fresh') pzChunkAddFresh &
+		;;
+        'chunks') pzChunkList & 
+		;;
+		*) echo "The command '$1' does not exist"
+	esac
+	wait
+else
+	case "$1" in 
+		'cmd') 
+
+            shift 
+            pzCmd "$*" 
+            pzWatch
+		;;
+		'msg')
+
+           shift
+           pzMsg "$*" &
+		;;
+		'fresh')
+
+            shift
+            pzChunkAddFresh $* &
+		;;
+        'replace')  
+
+            shift
+            pzChunkReplace $* &
+		;;
+        'chunks')  
+
+            shift
+            pzChunkList $* &
+		;;
+		*) echo "The commands '$*' does not exist" 
+	esac  
+    wait
+fi
