@@ -13,7 +13,7 @@ if [[ ! -d "$DIR" ]]; then DIR="$PWD"; fi
 pzPath=/home/"$USER"
 
 ################## Script Paths Variables ################
-pzBakPath=$pzPath/backup
+pzBkPath=$pzPath/pzBins
 pzCmdPath=$pzPath/bin
 pzFreshPath=$pzPath/mapBins
 pzZPath=$pzPath/Zomboid
