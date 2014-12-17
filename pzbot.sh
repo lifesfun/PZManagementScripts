@@ -20,7 +20,6 @@ function pzBot(){
 
 		pzGetNow "pzCheck: Errors detected. Attempting to fix.."
 		pzStop
-		pzRmZs
 		pzFix
 		pzStart
 	elif ! pzCheckStarted  ; then 

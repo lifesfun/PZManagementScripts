@@ -15,12 +15,19 @@ function pzStart(){
 	find $pzZPath/Logs -type f -exec mv {} /var/log/pz/ \; &>/dev/null 
 
 	screen -dm -L $pzPath/projectzomboid-dedi-server.sh  
-	pzCheckStarted && sleep 60s && pzMsg "The server has been rebooted. Welcome Back!"
+	if pzCheckStarted ; then  
+        pzGetNow "pzStart: Started" 
+        sleep 120s 
+        pzMsg "The server has been rebooted. Welcome Back!"
+    else
+        pzBot
+    fi
 }
 function pzStop(){ 
 
 	pzGetNow "pzStop: Lets stop this baddie." 
 	pzCmd save 
+	pzRmZs
 	i=0
 	while pzCheckStarted  ; do    
 		pzGetNow "pzStop: Pew->Pew-> >'$pzPid'"
@@ -33,6 +40,5 @@ function pzRestart(){
 	
 	pzGetNow "pzRestart" 
 	pzStop
-	pzRmZs
 	pzStart
 }
