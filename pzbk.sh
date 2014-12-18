@@ -1,47 +1,24 @@
 #!/bin/bash
 ##### Backup Functions #####
-function pzBk(){
 
-	pzGetNow "pzBackup: $1" 
-	local bkName="$pzNow"_bk_"$1".tar
-	local bkPath="$pzBakPath"/"$1" 
-	pzCmd save
-	ionice -c3 tar -C "$2" -cf "$bkPath"/"$bkName"  $3 
-}
-function pzBkMapBins(){
-	
-	pzMsg "Backup Up Time...You May Experience some lag :D"
-	pzBk "mapBins" "$pzMpPath" "servertest"	
-	pzCompress
-
-}
-function pzBkFreshBins(){
-
-	pzBk "freshBins" "$pzPath" "mapBins" 
-}
 function pzBkConf(){
-	
-	pzBk "db" "$pzZPath" "db" 
-	pzBk "server" "$pzZPath" "Server" 
+    [ -d "$pzBkPath" ] || mkdir "$pzBkPath" 
+    pzAzPath="$pzBkPath"/archive 
+    [ -d "$pzAzPath" ] || mkdir "$pzAzPath" 
 }
-
-##### Archive and Compression Functions #####
-function pzCompress(){
-	pzGetNow "pzCompress"
-	ionice -c3 find $pzBakPath -type f -name "*bk*.tar" -exec gzip {} \;
+function pzBk(){
+    pzBkConf
+	pzGetNow "pzBackup: Saving the past..." 
+	local bkName="$pzNow"_bk.tar
+	pzCmd save
+    ionice -c3 tar -C "$pzAzPath" -cf "$bkName" "$pzMpPath" "$pzZPath"/Server "$pzZPath"/db 
 }
-function pzArchive(){
-
-	pzMsg "Archiving todays saves...You May Experience some lag :D"
-	pzGetNow "pzArchive"
-	pzCompress
-	local aName="$pzNow"_archive.tar 
-	local aPaths='mapBins db server'
-	cd "$pzBakPath"
-	mkdir $aPaths
-	ionice -c3 tar -cf "$pzBakPath"/"$aName" $aPaths  
-	[ "$?" -eq '0' ] && rm -rf $aPaths
-	mkdir $aPaths
-	cd - 
-	pzMsg "Todays archive has completed!"
+function pzAz(){
+    pzBkConf
+    local day=$(date +%y.%m.%d )
+    local archive="$pzAzPath"/"$day"_pzAz.tar
+    local latest="$(find $pzAzPath -type f -name "$day*_bk.tar" | tail -1 )" || exit
+    mv "$latest" "$archive" &&  rm -rf "$day"T*
+    gzip "$archive" 
+    #sftp "$bk_srv" -C put "$archive"  
 }

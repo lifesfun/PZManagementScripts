@@ -28,15 +28,9 @@ if [ "$#" -eq '1' ]  ; then
 		'fix') pzFix  &
 		;;
         ### Backup ###
-		'bkmaps') pzBkMapBins &
+		'bk') pzBk &
 		;;
-		'bkfresh') pzBkFreshBins &
-		;;
-		'bkconf') pzBkConf &
-		;;
-		'compress') pzCompress  &
-		;;
-		'archive') pzArchive  &
+		'az') pzAz &
 		;;
         'fresh') pzChunkAddFresh &
 		;;
