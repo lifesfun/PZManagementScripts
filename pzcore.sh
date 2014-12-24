@@ -16,12 +16,13 @@ function pzStart(){
 
 	screen -dm -L $pzPath/projectzomboid-dedi-server.sh  
 	if pzCheckStarted ; then  
-        pzGetNow "pzStart: Started" 
-        sleep 120s 
-        pzMsg "The server has been rebooted. Welcome Back!"
-    else
-        pzBot
-    fi
+		pzGetNow "pzStart: Started"  
+		pzGetNow "pzStart: Server was started from a stopped state." >/var/mail/pz   
+		sleep 120s 
+		pzMsg "The server has been rebooted. Welcome Back!"
+	else
+		pzBot
+	fi
 }
 function pzStop(){ 
 

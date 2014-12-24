@@ -10,10 +10,9 @@ if [[ ! -d "$DIR" ]]; then DIR="$PWD"; fi
 . "$DIR/pzchunk.sh"
 
 #User Directory
-pzPath=/home/"$USER"
+pzPath=/home/"$( id -un )"
 
 ################## Script Paths Variables ################
-pzBkPath=$pzPath/pzBins
 pzCmdPath=$pzPath/bin
 pzFreshPath=$pzPath/mapBins
 pzZPath=$pzPath/Zomboid
