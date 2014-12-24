@@ -28,16 +28,19 @@ if [ "$#" -eq '1' ]  ; then
 		'fix') pzFix  &
 		;;
         ### Backup ###
+		'chbot') pzChunkBot &
+		;;
 		'bk') pzBk &
 		;;
 		'az') pzAz &
 		;;
-        'fresh') pzChunkAddFresh &
+		'fresh') pzChunkAddFresh &
 		;;
-        'chunks') pzChunkList & 
+		'chunks') pzChunkList & 
 		;;
 		*) echo "The command '$1' does not exist"
 	esac
+	wait
 else
 	case "$1" in 
 		'cmd') 
@@ -68,4 +71,5 @@ else
 		;;
 		*) echo "The commands '$*' does not exist" 
 	esac  
+	wait
 fi

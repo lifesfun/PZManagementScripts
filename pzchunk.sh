@@ -1,4 +1,26 @@
 #!/bin/bash
+function pzChunkBot(){
+
+	local opts=( 
+		'pzChunkReplace'
+	       	'pzChunkList'
+		'pzChunkAddFresh'
+	)
+	local n=1
+	echo "${FUNCNAME[0]}: Hello!"
+	echo "****************************"
+	echo "Options:"
+	for i in "${opts[@]}" ; do
+		echo "$n". "$i" 
+		n=$(( n + 1 ))
+	done
+	echo "****************************"
+
+	read var 
+	if [ -z opts["$var"] ] ; then 
+		echo $var
+	fi
+}
 function pzChunkAddFresh(){
 
     if [ "$#" -eq '1' ] ; then 
