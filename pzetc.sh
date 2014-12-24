@@ -20,7 +20,7 @@ function pzWatch(){
 }
 function pzUpdate(){
 
-	/home/steam/steamcmd.sh +login furrballd@msn.com vsmac1.1steam +force_install_dir /home/pz/ +app_update 108600 +exit
+	/home/steam/steamcmd.sh +login $user $password +force_install_dir /home/pz/ +app_update 108600 +exit
 }
 function pzAutoRestart(){ 
 
