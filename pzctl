@@ -38,7 +38,6 @@ if [ "$#" -eq '1' ]  ; then
 		;;
 		*) echo "The command '$1' does not exist"
 	esac
-	wait
 else
 	case "$1" in 
 		'cmd') 
@@ -69,5 +68,4 @@ else
 		;;
 		*) echo "The commands '$*' does not exist" 
 	esac  
-    wait
 fi
