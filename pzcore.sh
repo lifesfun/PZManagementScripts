@@ -8,9 +8,9 @@ function pzStart(){
 	pzCheckStarted  && return 0  
 
 	mv $pzMpPath/map* $pzMapPath &>/dev/null 
-	mv $pzZPath/screenlog.0 /var/log/pz/$pzNow_screenlog.0
+	mv $pzZPath/screenlog.0 /var/log/pz/"$pzNow"_screenlog.0
 	touch $pzZPath/screenlog.0
-	mv $pzZPath/console.txt  /var/log/pz/$pzNow_console.txt
+	mv $pzZPath/console.txt  /var/log/pz/"$pzNow"_console.txt
 	touch $pzZPath/console.txt
 	find $pzZPath/Logs -type f -exec mv {} /var/log/pz/ \; &>/dev/null 
 
