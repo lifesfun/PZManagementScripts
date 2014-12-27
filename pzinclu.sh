@@ -18,5 +18,4 @@ pzFreshPath=$pzPath/mapBins
 pzZPath=$pzPath/Zomboid
 
 pzMpPath=$pzZPath/Multiplayer
-
 pzMapPath=$pzMpPath/servertest

@@ -2,9 +2,9 @@
 ##### Backup Functions #####
 
 function pzBkConf(){
-    pzBkPath="/var/backups/pzbackup"
+    pzBkPath="/home/archive"
     [ -d "$pzBkPath" ] || mkdir "$pzBkPath" 
-    pzAzPath="$pzBkPath"/archive 
+    pzAzPath="$pzBkPath"/pzArchive 
     [ -d "$pzAzPath" ] || mkdir "$pzAzPath" 
 }
 function pzBk(){

@@ -5,7 +5,7 @@
 function pzStart(){ 
 
 	pzGetNow "pzStart: Starting..." 
-	pzCheckStarted  && return 0  
+	pzCheckStarted && return 0  
 
 	mv $pzMpPath/map* $pzMapPath &>/dev/null 
 	mv $pzZPath/screenlog.0 /var/log/pz/"$pzNow"_screenlog.0
