@@ -20,7 +20,8 @@ function pzWatch(){
 }
 function pzUpdate(){
 
-	/home/steam/steamcmd.sh +login $user $password +force_install_dir /home/pz/ +app_update 108600 +exit
+	/home/pz/.steamUser
+	/home/pz/steamcmd.sh +login $steamUser $steamPassword +force_install_dir /home/pz/ +app_update 108600 +exit
 }
 function pzAutoRestart(){ 
 

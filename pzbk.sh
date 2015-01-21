@@ -20,7 +20,7 @@ function pzAz(){
     local day=$(date +%y.%m.%d )
     local archive="$pzAzPath"/"$day"_pzAz.tar
     local latest="$(find $pzAzPath -type f -name "$day*_bk.tar" | tail -1 )" || exit
-    mv "$latest" "$archive" &&  rm -rf "$day"*T*
+    mv "$latest" "$archive" &&  rm -rf *T*
 	if [ -f "$archive" ] ; then 
 		[ -f "$archive"'.gz' ] && rm "$archive"'.gz'  
 		gzip "$archive" 

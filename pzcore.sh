@@ -20,9 +20,8 @@ function pzStart(){
 		pzGetNow "pzStart: Server was started from a stopped state." >/var/mail/pz   
 		sleep 120s 
 		pzMsg "The server has been rebooted. Welcome Back!"
-	else
-		pzBot
 	fi
+#	pzBot
 }
 function pzStop(){ 
 
