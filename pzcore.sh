@@ -3,7 +3,7 @@
 ################## Server Core Commands #########################
 
 function pzStart(){ 
-
+	pzStop
 	pzGetNow "pzStart: Starting..." 
 	pzCheckStarted && return 0  
 

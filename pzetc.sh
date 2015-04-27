@@ -21,8 +21,7 @@ function pzWatch(){
 function pzUpdate(){
 
 	. /home/pz/.steamUser
-	echo "$steamUser $steamPassword" 
-	/home/pz/steamcmd.sh +login $steamUser $steamPassword +force_install_dir /home/pz/ +app_update 108600 
+	/home/pz/steamcmd/steamcmd.sh +login $steamUser $steamPassword +force_install_dir /home/pz/ +app_update 108600 
 }
 function pzAutoRestart(){ 
 

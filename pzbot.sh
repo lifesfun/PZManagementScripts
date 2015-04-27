@@ -23,6 +23,7 @@ function pzBot(){
 		pzStart
 	elif ! pzCheckStarted  ; then 
 
+		pzStop
 		pzGetNow "pzBot: Server is off. Attempting to start..."
 		pzStart
 	else 
