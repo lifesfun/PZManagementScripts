@@ -18,12 +18,12 @@ function pzBk(){
 function pzAz(){
 	pzBkConf
 	local day=$(date +%y.%m.%d )
-	local archive="$pzAzPath"/"$day"_az.tar
+	local archive="$pzAzPath"/"$day"_pz.tar.gz
+	local newArchive="$pzAzPath"/"$day"_pz.tar
 	local latest="$(find $pzAzPath -type f -name "$day*_bk.tar" | tail -1 )" || exit
+	[ -f "$archive" ] && rm "$archive" && echo "deleting old archive"  
 	echo "$latest to $archive"
-	mv "$latest" "$archive" &&  rm -rf *T*
-	if [ -f "$archive" ] ; then 
-		[ -f "$archive"'.gz' ] && rm "$archive"'.gz'  
-		gzip "$archive" 
-	fi
+	mv "$latest" "$newArchive"  
+	gzip "$newArchive" 
+	rm -rf "$day"T*
 }
